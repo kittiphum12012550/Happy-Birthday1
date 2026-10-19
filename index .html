@@ -57,24 +57,24 @@ main{width:92%;max-width:480px;padding:20px 0;z-index:5;display:flex;flex-direct
 <span class="deco" style="bottom:10%;left:12%;animation-delay:-1.5s">🖤</span><span class="deco" style="bottom:8%;right:14%;animation-delay:-2.5s">💀</span>
 
 <main>
-  <div class="ears" aria-hidden="true"><span>🦇</span><span>🦇</span></div>
-  <h1>สุขสันต์วันเกิด!</h1>
-  <p class="sub" id="who"></p>
+  <div class="ears" aria-hidden="true"><span>🦇</span><span>🦇</span></div>
+  <h1>สุขสันต์วันเกิด!</h1>
+  <p class="sub" id="who"></p>
 
-  <div class="cake" id="cake">
-    <div class="candles" id="candles"><span class="candle">🕯️</span><span class="candle" style="animation-delay:-.2s">🕯️</span><span class="candle" style="animation-delay:-.4s">🕯️</span></div>
-    <span class="cakeico">🎂</span>
-  </div>
-  <p class="hint" id="hint">แตะเค้กเพื่อเป่าเทียน 🕯️</p>
+  <div class="cake" id="cake">
+    <div class="candles" id="candles"><span class="candle">🕯️</span><span class="candle" style="animation-delay:-.2s">🕯️</span><span class="candle" style="animation-delay:-.4s">🕯️</span></div>
+    <span class="cakeico">🎂</span>
+  </div>
+  <p class="hint" id="hint">แตะเค้กเพื่อเป่าเทียน 🕯️</p>
 
-  <div class="gift" id="gift"><div class="g" id="gicon">🎁</div><span class="chip" id="gtxt">แตะที่กล่องของขวัญสิ! 💜</span></div>
+  <div class="gift" id="gift"><div class="g" id="gicon">🎁</div><span class="chip" id="gtxt">แตะที่กล่องของขวัญสิ! 💜</span></div>
 
-  <div class="bar">
-    <button class="chip" id="bMusic">🎵 เปิดเพลง</button>
-    <button class="chip" id="bFortune">🔮 ดวงวันเกิด</button>
-    <button class="chip" id="bGame">🎮 เกม</button>
-    <button class="chip" id="bPhoto">🖼️ รูป</button>
-  </div>
+  <div class="bar">
+    <button class="chip" id="bMusic">🎵 เปิดเพลง</button>
+    <button class="chip" id="bFortune">🔮 ดวงวันเกิด</button>
+    <button class="chip" id="bGame">🎮 เกม</button>
+    <button class="chip" id="bPhoto">🖼️ รูป</button>
+  </div>
 </main>
 
 <div id="modal"><div class="card" id="mc"></div></div>
@@ -82,24 +82,24 @@ main{width:92%;max-width:480px;padding:20px 0;z-index:5;display:flex;flex-direct
 <script>
 /* ===== ตั้งค่าตรงนี้ ===== */
 const CONFIG = {
-  name: "",            // ชื่อคนที่วันเกิด เช่น "แพรว"
-  from: "",            // ชื่อคนส่ง เช่น "ยอร์ช"
-  birthday: "",        // "2026-12-25T00:00:00" ถ้าอยากนับถอยหลัง (เว้นว่างได้)
-  photos: [],          // เช่น ["img/1.jpg","img/2.jpg"] (ใส่ไฟล์รูปไว้ใน repo)
-  wishes: [
-    "ขอให้มีความสุขมากๆ คิดสิ่งใดขอให้สมปรารถนา สุขภาพร่างกายแข็งแรงนะ!",
-    "ขอให้ปีนี้เป็นปีที่ดีที่สุด เจอแต่เรื่องดีๆ และรอยยิ้มทุกวันนะ 💜",
-    "ขอให้รวยๆ เฮงๆ ทำอะไรก็สำเร็จ ไม่มีอุปสรรคมาขวางเลย!",
-    "ขอให้มีแต่คนรัก คนเอ็นดู และมีความสุขเหมือนได้กินของอร่อยทุกวัน 🍰",
-    "โตขึ้นอีกปีแล้ว ขอให้ยังน่ารักและใจดีแบบนี้ตลอดไปนะ 🎀"
-  ],
-  fortunes: [
-    "วันนี้โชคดีเป็นพิเศษ ลองซื้อลอตเตอรี่ดูนะ 🍀",
-    "จะมีข่าวดีเข้ามาเร็วๆ นี้ เตรียมยิ้มรอได้เลย 💌",
-    "ปีนี้เสน่ห์แรง คนรอบตัวเอ็นดูเป็นพิเศษ 😈💜",
-    "งานการเงินลื่นไหล มีของขวัญไม่คาดฝันรออยู่ 🎁",
-    "สุขภาพดี ใจเบิกบาน ขอให้กินอิ่มนอนหลับทุกคืน 🌙"
-  ]
+  name: "",            // ชื่อคนที่วันเกิด เช่น "แพรว"
+  from: "",            // ชื่อคนส่ง เช่น "ยอร์ช"
+  birthday: "",        // "2026-12-25T00:00:00" ถ้าอยากนับถอยหลัง (เว้นว่างได้)
+  photos: [],          // เช่น ["img/1.jpg","img/2.jpg"] (ใส่ไฟล์รูปไว้ใน repo)
+  wishes: [
+    "ขอให้มีความสุขมากๆ คิดสิ่งใดขอให้สมปรารถนา สุขภาพร่างกายแข็งแรงนะ!",
+    "ขอให้ปีนี้เป็นปีที่ดีที่สุด เจอแต่เรื่องดีๆ และรอยยิ้มทุกวันนะ 💜",
+    "ขอให้รวยๆ เฮงๆ ทำอะไรก็สำเร็จ ไม่มีอุปสรรคมาขวางเลย!",
+    "ขอให้มีแต่คนรัก คนเอ็นดู และมีความสุขเหมือนได้กินของอร่อยทุกวัน 🍰",
+    "โตขึ้นอีกปีแล้ว ขอให้ยังน่ารักและใจดีแบบนี้ตลอดไปนะ 🎀"
+  ],
+  fortunes: [
+    "วันนี้โชคดีเป็นพิเศษ ลองซื้อลอตเตอรี่ดูนะ 🍀",
+    "จะมีข่าวดีเข้ามาเร็วๆ นี้ เตรียมยิ้มรอได้เลย 💌",
+    "ปีนี้เสน่ห์แรง คนรอบตัวเอ็นดูเป็นพิเศษ 😈💜",
+    "งานการเงินลื่นไหล มีของขวัญไม่คาดฝันรออยู่ 🎁",
+    "สุขภาพดี ใจเบิกบาน ขอให้กินอิ่มนอนหลับทุกคืน 🌙"
+  ]
 };
 /* ======================== */
 
@@ -112,11 +112,11 @@ const COLORS = ["#c4a1ff","#e9d8ff","#ff8cc6","#f8d4ee","#7c4dcc","#ffffff"];
 const fire = o => confetti({ useWorker: false, disableForReducedMotion: true, ...o });
 const boom = (n = 120) => fire({ particleCount: n, spread: 90, origin: { y: .6 }, colors: COLORS, zIndex: 100 });
 function rain() {
-  const end = Date.now() + 3000;
-  const iv = setInterval(() => {
-    if (Date.now() > end) return clearInterval(iv);
-    for (const x of [.15, .85]) fire({ particleCount: 14, spread: 360, startVelocity: 25, ticks: 60, zIndex: 100, colors: COLORS, origin: { x, y: Math.random() * .6 } });
-  }, 250);
+  const end = Date.now() + 3000;
+  const iv = setInterval(() => {
+    if (Date.now() > end) return clearInterval(iv);
+    for (const x of [.15, .85]) fire({ particleCount: 14, spread: 360, startVelocity: 25, ticks: 60, zIndex: 100, colors: COLORS, origin: { x, y: Math.random() * .6 } });
+  }, 250);
 }
 
 /* ---- modal ---- */
@@ -130,69 +130,69 @@ mc.addEventListener("click", e => { if (e.target.dataset.close !== undefined) cl
 /* ---- เป่าเทียน ---- */
 let blown = false;
 $("cake").addEventListener("click", () => {
-  if (blown) { document.querySelectorAll(".candle").forEach(c => c.classList.remove("out")); blown = false; $("hint").textContent = "แตะเค้กเพื่อเป่าเทียน 🕯️"; return; }
-  document.querySelectorAll(".candle").forEach((c, i) => setTimeout(() => c.classList.add("out"), i * 250));
-  setTimeout(() => { boom(); $("hint").textContent = "เป่าเทียนแล้ว! อธิษฐานด้วยนะ 🙏 (แตะอีกทีเพื่อจุดใหม่)"; }, 800);
-  blown = true;
+  if (blown) { document.querySelectorAll(".candle").forEach(c => c.classList.remove("out")); blown = false; $("hint").textContent = "แตะเค้กเพื่อเป่าเทียน 🕯️"; return; }
+  document.querySelectorAll(".candle").forEach((c, i) => setTimeout(() => c.classList.add("out"), i * 250));
+  setTimeout(() => { boom(); $("hint").textContent = "เป่าเทียนแล้ว! อธิษฐานด้วยนะ 🙏 (แตะอีกทีเพื่อจุดใหม่)"; }, 800);
+  blown = true;
 });
 
 /* ---- ของขวัญ + นับถอยหลัง ---- */
 const target = CONFIG.birthday ? new Date(CONFIG.birthday).getTime() : 0;
 const locked = () => target && Date.now() < target;
 function tick() {
-  if (!locked()) { $("gtxt").textContent = "แตะที่กล่องของขวัญสิ! 💜"; return; }
-  let s = Math.floor((target - Date.now()) / 1000);
-  const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
-  $("gtxt").textContent = "🔒 อีก " + d + " วัน " + h + " ชม. " + m + " นาที";
+  if (!locked()) { $("gtxt").textContent = "แตะที่กล่องของขวัญสิ! 💜"; return; }
+  let s = Math.floor((target - Date.now()) / 1000);
+  const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+  $("gtxt").textContent = "🔒 อีก " + d + " วัน " + h + " ชม. " + m + " นาที";
 }
 tick(); setInterval(tick, 1000);
 
 function wishCard() {
-  open(`<div style="font-size:2rem">🎀💜🎀</div><h2>เซอร์ไพรส์! 🎉</h2><p id="wt">${pick(CONFIG.wishes)}</p>${FROM ? `<p style="margin-top:-.6rem;color:var(--deep)">💌 จาก ${FROM}</p>` : ""}<button class="btn alt" id="nw">คำอวยพรอื่น 💌</button><button class="btn" data-close>รับพร! 💜</button>`,
-    () => { $("gicon").textContent = "🎁"; });
-  $("nw").onclick = () => { $("wt").textContent = pick(CONFIG.wishes); boom(40); };
+  open(`<div style="font-size:2rem">🎀💜🎀</div><h2>เซอร์ไพรส์! 🎉</h2><p id="wt">${pick(CONFIG.wishes)}</p>${FROM ? `<p style="margin-top:-.6rem;color:var(--deep)">💌 จาก ${FROM}</p>` : ""}<button class="btn alt" id="nw">คำอวยพรอื่น 💌</button><button class="btn" data-close>รับพร! 💜</button>`,
+    () => { $("gicon").textContent = "🎁"; });
+  $("nw").onclick = () => { $("wt").textContent = pick(CONFIG.wishes); boom(40); };
 }
 $("gift").addEventListener("click", () => {
-  if (locked()) return open(`<div style="font-size:3rem">🔒</div><h2>ยังไม่ถึงเวลานะ~</h2><p>รออีกนิดแล้วค่อยกลับมาเปิดนะ 💜</p><button class="btn" data-close>โอเค</button>`);
-  $("gicon").textContent = "🎉"; rain(); setTimeout(wishCard, 400);
+  if (locked()) return open(`<div style="font-size:3rem">🔒</div><h2>ยังไม่ถึงเวลานะ~</h2><p>รออีกนิดแล้วค่อยกลับมาเปิดนะ 💜</p><button class="btn" data-close>โอเค</button>`);
+  $("gicon").textContent = "🎉"; rain(); setTimeout(wishCard, 400);
 });
 
 /* ---- ดวง ---- */
 $("bFortune").onclick = () => {
-  open(`<div style="font-size:3rem">🔮</div><h2>ดวงวันเกิด</h2><p id="ft">${pick(CONFIG.fortunes)}</p><button class="btn alt" id="nf">ดูใหม่ ✨</button><button class="btn" data-close>ขอบคุณ 💜</button>`);
-  $("nf").onclick = () => { $("ft").textContent = pick(CONFIG.fortunes); boom(30); };
+  open(`<div style="font-size:3rem">🔮</div><h2>ดวงวันเกิด</h2><p id="ft">${pick(CONFIG.fortunes)}</p><button class="btn alt" id="nf">ดูใหม่ ✨</button><button class="btn" data-close>ขอบคุณ 💜</button>`);
+  $("nf").onclick = () => { $("ft").textContent = pick(CONFIG.fortunes); boom(30); };
 };
 
 /* ---- รูป ---- */
 $("bPhoto").onclick = () => {
-  const P = CONFIG.photos, ph = ["🧸", "🎀", "💜", "🦇", "🍰"];
-  const n = P.length || ph.length;
-  let i = 0;
-  const show = () => $("sl").outerHTML = P.length ? `<img id="sl" class="slide" src="${P[i]}" alt="photo">` : `<div id="sl" class="slide">${ph[i]}</div>`;
-  open(`<h2>🖼️ ความทรงจำ</h2><div id="sl"></div><p id="cnt" style="margin:.6rem 0">1 / ${n}</p>${P.length ? "" : '<p style="font-size:.9rem;opacity:.7;margin-top:-.4rem">ใส่รูปที่ CONFIG.photos ในโค้ด</p>'}<button class="btn alt" id="pv">◀</button><button class="btn alt" id="nx">▶</button><br><button class="btn" data-close>ปิด</button>`);
-  const go = d => { i = (i + d + n) % n; show(); $("cnt").textContent = (i + 1) + " / " + n; };
-  show(); $("pv").onclick = () => go(-1); $("nx").onclick = () => go(1);
+  const P = CONFIG.photos, ph = ["🧸", "🎀", "💜", "🦇", "🍰"];
+  const n = P.length || ph.length;
+  let i = 0;
+  const show = () => $("sl").outerHTML = P.length ? `<img id="sl" class="slide" src="${P[i]}" alt="photo">` : `<div id="sl" class="slide">${ph[i]}</div>`;
+  open(`<h2>🖼️ ความทรงจำ</h2><div id="sl"></div><p id="cnt" style="margin:.6rem 0">1 / ${n}</p>${P.length ? "" : '<p style="font-size:.9rem;opacity:.7;margin-top:-.4rem">ใส่รูปที่ CONFIG.photos ในโค้ด</p>'}<button class="btn alt" id="pv">◀</button><button class="btn alt" id="nx">▶</button><br><button class="btn" data-close>ปิด</button>`);
+  const go = d => { i = (i + d + n) % n; show(); $("cnt").textContent = (i + 1) + " / " + n; };
+  show(); $("pv").onclick = () => go(-1); $("nx").onclick = () => go(1);
 };
 
 /* ---- เกม ---- */
 $("bGame").onclick = () => {
-  let score = 0, t = 15, over = false;
-  open(`<h2>🎮 แตะให้ทัน!</h2><p style="margin:0 0 .6rem">เวลา <b id="gt">15</b> | คะแนน <b id="gs">0</b></p><div class="arena" id="ar"></div><button class="btn" data-close>ปิด</button>`, () => { over = true; });
-  const ar = $("ar"), icons = ["🎈", "🦇", "💜", "⭐", "🎀"];
-  const spawn = () => {
-    if (over) return;
-    const e = document.createElement("span"); e.className = "tgt"; e.textContent = pick(icons);
-    e.style.left = Math.random() * 85 + "%"; e.style.top = Math.random() * 80 + "%";
-    e.onpointerdown = () => { score++; $("gs").textContent = score; e.remove(); };
-    ar.appendChild(e); setTimeout(() => e.remove(), 1100);
-    setTimeout(spawn, 380);
-  };
-  spawn();
-  const iv = setInterval(() => {
-    if (over) return clearInterval(iv);
-    $("gt").textContent = --t;
-    if (t <= 0) { clearInterval(iv); over = true; ar.innerHTML = `<div style="padding-top:5rem;font-size:1.4rem">🎉 ได้ ${score} คะแนน!</div>`; boom(60); }
-  }, 1000);
+  let score = 0, t = 15, over = false;
+  open(`<h2>🎮 แตะให้ทัน!</h2><p style="margin:0 0 .6rem">เวลา <b id="gt">15</b> | คะแนน <b id="gs">0</b></p><div class="arena" id="ar"></div><button class="btn" data-close>ปิด</button>`, () => { over = true; });
+  const ar = $("ar"), icons = ["🎈", "🦇", "💜", "⭐", "🎀"];
+  const spawn = () => {
+    if (over) return;
+    const e = document.createElement("span"); e.className = "tgt"; e.textContent = pick(icons);
+    e.style.left = Math.random() * 85 + "%"; e.style.top = Math.random() * 80 + "%";
+    e.onpointerdown = () => { score++; $("gs").textContent = score; e.remove(); };
+    ar.appendChild(e); setTimeout(() => e.remove(), 1100);
+    setTimeout(spawn, 380);
+  };
+  spawn();
+  const iv = setInterval(() => {
+    if (over) return clearInterval(iv);
+    $("gt").textContent = --t;
+    if (t <= 0) { clearInterval(iv); over = true; ar.innerHTML = `<div style="padding-top:5rem;font-size:1.4rem">🎉 ได้ ${score} คะแนน!</div>`; boom(60); }
+  }, 1000);
 };
 
 /* ---- เพลง Happy Birthday (WebAudio) ---- */
@@ -200,30 +200,30 @@ let ac, playing = false, timers = [];
 const N = { C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23, G4: 392, A4: 440, B4: 493.88, C5: 523.25, D5: 587.33, E5: 659.25, F5: 698.46, G5: 783.99 };
 const SONG = [["G4",.75],["G4",.25],["A4",1],["G4",1],["C5",1],["B4",2],["G4",.75],["G4",.25],["A4",1],["G4",1],["D5",1],["C5",2],["G4",.75],["G4",.25],["G5",1],["E5",1],["C5",1],["B4",1],["A4",1],["F5",.75],["F5",.25],["E5",1],["C5",1],["D5",1],["C5",2]];
 function note(f, at, dur) {
-  const o = ac.createOscillator(), g = ac.createGain();
-  o.type = "triangle"; o.frequency.value = f; o.connect(g); g.connect(ac.destination);
-  g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(.25, at + .02); g.gain.exponentialRampToValueAtTime(.001, at + dur);
-  o.start(at); o.stop(at + dur + .05);
+  const o = ac.createOscillator(), g = ac.createGain();
+  o.type = "triangle"; o.frequency.value = f; o.connect(g); g.connect(ac.destination);
+  g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(.25, at + .02); g.gain.exponentialRampToValueAtTime(.001, at + dur);
+  o.start(at); o.stop(at + dur + .05);
 }
 function stopSong() { timers.forEach(clearTimeout); timers = []; playing = false; $("bMusic").textContent = "🎵 เปิดเพลง"; }
 $("bMusic").onclick = () => {
-  if (playing) { if (ac) ac.close(); ac = null; return stopSong(); }
-  ac = new (window.AudioContext || window.webkitAudioContext)();
-  let t = ac.currentTime + .1, beat = .42;
-  SONG.forEach(([n, b]) => { note(N[n], t, b * beat); t += b * beat; });
-  playing = true; $("bMusic").textContent = "⏸️ หยุดเพลง";
-  timers.push(setTimeout(stopSong, (t - ac.currentTime) * 1000 + 300));
+  if (playing) { if (ac) ac.close(); ac = null; return stopSong(); }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  let t = ac.currentTime + .1, beat = .42;
+  SONG.forEach(([n, b]) => { note(N[n], t, b * beat); t += b * beat; });
+  playing = true; $("bMusic").textContent = "⏸️ หยุดเพลง";
+  timers.push(setTimeout(stopSong, (t - ac.currentTime) * 1000 + 300));
 };
 
 /* ---- เอฟเฟกต์ตามนิ้ว ---- */
 let last = 0;
 const bits = ["💜", "🎀", "⭐", "✨", "🦇"];
 addEventListener("pointermove", e => {
-  const n = Date.now(); if (n - last < 70) return; last = n;
-  const s = document.createElement("span"); s.className = "trail"; s.textContent = pick(bits);
-  s.style.left = e.clientX - 8 + "px"; s.style.top = e.clientY - 8 + "px";
-  document.body.appendChild(s); setTimeout(() => s.remove(), 900);
+  const n = Date.now(); if (n - last < 70) return; last = n;
+  const s = document.createElement("span"); s.className = "trail"; s.textContent = pick(bits);
+  s.style.left = e.clientX - 8 + "px"; s.style.top = e.clientY - 8 + "px";
+  document.body.appendChild(s); setTimeout(() => s.remove(), 900);
 });
 </script>
 </body>
-</html>
+</html> github

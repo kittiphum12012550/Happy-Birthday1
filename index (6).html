@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>สุขสันต์วันเกิด!</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&family=Mali:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#ffe3f0;--bg2:#ffc4de;--ink:#7a1f4d;--pink:#ff4fa0;--deep:#d6247f;--card:rgba(255,255,255,.6);--chip:rgba(255,255,255,.75);--line:rgba(255,255,255,.8)}
+@media(prefers-color-scheme:dark){:root{--bg1:#3d1030;--bg2:#6b1d4a;--ink:#ffe8f3;--pink:#ff8cc6;--deep:#ff9fd0;--card:rgba(80,20,55,.7);--chip:rgba(80,20,55,.75);--line:rgba(255,255,255,.2)}}
+*{box-sizing:border-box}
+html{height:100%}
+body{margin:0;min-height:100%;font-family:'Kanit',sans-serif;color:var(--ink);text-align:center;overflow-x:hidden;
+background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.5),transparent 35%),radial-gradient(circle at 85% 80%,var(--bg2),transparent 45%),linear-gradient(160deg,var(--bg1),var(--bg2));background-attachment:fixed;
+display:flex;flex-direction:column;align-items:center;justify-content:center;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+h1{font-family:'Prompt',sans-serif;color:var(--deep);font-size:clamp(2.2rem,9vw,3.4rem);margin:.2rem 0;text-shadow:0 3px 0 #fff,0 6px 14px rgba(214,36,127,.3);animation:bob 2s ease-in-out infinite}
+.sub{margin:0 0 .6rem;font-size:1.2rem;color:var(--pink);font-weight:600}
+main{width:92%;max-width:480px;padding:20px 0;z-index:5;display:flex;flex-direction:column;align-items:center}
+.ears{display:flex;gap:7rem;font-size:2.4rem;margin-bottom:-.9rem}
+.deco{position:fixed;z-index:1;font-size:1.6rem;opacity:.7;animation:drift 5s ease-in-out infinite;pointer-events:none}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-18px) rotate(8deg)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes flick{0%,100%{transform:scale(1) rotate(-3deg)}50%{transform:scale(1.15) rotate(3deg)}}
+@keyframes rise{to{transform:translateY(-40px);opacity:0}}
+.cake{position:relative;background:var(--chip);border:3px dashed var(--pink);border-radius:36px;padding:.4rem 1.6rem 0;margin:.4rem 0 1rem;cursor:pointer}
+.candles{display:flex;gap:1.3rem;justify-content:center;margin-bottom:-.9rem;position:relative;z-index:2}
+.candle{font-size:1.8rem;display:inline-block;animation:flick .6s infinite;transition:.3s;position:relative}
+.candle.out{animation:none;filter:grayscale(1) opacity(.5)}
+.candle.out::after{content:"💨";position:absolute;left:0;top:-6px;font-size:1.2rem;animation:rise 1s forwards}
+.cakeico{font-size:6.5rem;display:block;animation:bob 3s ease-in-out infinite}
+.hint{font-size:.95rem;opacity:.8;margin:-.4rem 0 .8rem}
+.chip{border:2px solid var(--line);background:var(--chip);color:var(--pink);font:600 1.05rem 'Kanit',sans-serif;border-radius:999px;padding:.5rem 1.2rem;cursor:pointer;box-shadow:0 4px 14px rgba(255,79,160,.3)}
+.chip:active{transform:scale(.95)}
+.gift{cursor:pointer;display:flex;flex-direction:column;align-items:center;margin-bottom:1rem}
+.gift .g{font-size:4.8rem;transition:.3s}.gift:hover .g{transform:scale(1.1);animation:pulse 1s infinite}
+.bar{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+#modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:rgba(214,36,127,.2);opacity:0;pointer-events:none;transition:opacity .4s}
+#modal.show{opacity:1;pointer-events:auto}
+.card{width:90%;max-width:400px;max-height:88vh;overflow:auto;padding:1.6rem;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:2px solid var(--line);border-radius:28px;box-shadow:0 8px 32px rgba(214,36,127,.3);transform:translateY(30px) scale(.95);transition:.5s cubic-bezier(.68,-.55,.265,1.55)}
+#modal.show .card{transform:none}
+.card h2{font-family:'Prompt',sans-serif;color:var(--pink);margin:.2rem 0 .8rem;font-size:1.8rem}
+.card p{font-size:1.2rem;line-height:1.6;margin:.4rem 0 1.2rem}
+.btn{border:0;color:#fff;font:700 1.1rem 'Kanit',sans-serif;padding:.7rem 1.8rem;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,var(--pink),var(--deep));box-shadow:0 6px 16px rgba(214,36,127,.4);margin:.2rem}
+.btn.alt{background:var(--chip);color:var(--deep);box-shadow:none;border:2px solid var(--line)}
+.trail{position:fixed;pointer-events:none;z-index:99;font-size:1.2rem;animation:rise .9s forwards}
+body,.chip,.btn{font-family:'Mali','Kanit',sans-serif}
+h1,.card h2{font-family:'Mali','Kanit',sans-serif;font-weight:700}
+body{background:radial-gradient(rgba(255,255,255,.55) 3px,transparent 4px) 0 0/28px 28px,radial-gradient(circle at 20% 15%,rgba(255,255,255,.5),transparent 35%),radial-gradient(circle at 85% 80%,var(--bg2),transparent 45%),linear-gradient(160deg,var(--bg1),var(--bg2));background-attachment:fixed}
+h1{text-shadow:0 3px 0 #fff,0 6px 0 var(--pink)}
+.ears{display:block;margin-bottom:-1.4rem;font-size:1rem}
+.ears svg{width:130px;height:auto;animation:bob 2.4s ease-in-out infinite;position:relative;z-index:3}
+.blink{transform-box:fill-box;transform-origin:center;animation:blink 3.5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.cake{border-style:solid;border-width:4px;border-radius:46px;box-shadow:0 7px 0 var(--pink)}
+.chip,.btn{box-shadow:0 4px 0 var(--deep)}
+.btn.alt{box-shadow:0 4px 0 var(--line)}
+.card{border:4px solid var(--pink);border-radius:38px}
+.deco{font-size:2rem}
+.ears{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.ears:hover svg{filter:drop-shadow(0 6px 10px rgba(214,36,127,.35))}
+.ears.jump{animation:hop .6s}
+.ears.spin{animation:spin .8s}
+@keyframes hop{0%{transform:none}20%{transform:scale(1.12,.88)}50%{transform:translateY(-46px) scale(.92,1.1)}80%{transform:scale(1.1,.9)}100%{transform:none}}
+@keyframes spin{to{transform:rotate(360deg) scale(1)}}
+.bubble{position:absolute;left:50%;top:-2.6rem;z-index:6;transform:translateX(-50%) scale(0);transform-origin:50% 120%;background:var(--chip);border:3px solid var(--pink);border-radius:18px;padding:.3rem .9rem;font:700 .95rem 'Mali','Kanit',sans-serif;color:var(--deep);white-space:nowrap;transition:transform .25s cubic-bezier(.68,-.55,.265,1.55);pointer-events:none}
+.bubble.show{transform:translateX(-50%) scale(1)}
+.bubble::after{content:"";position:absolute;left:50%;bottom:-9px;width:12px;height:12px;background:var(--chip);border-right:3px solid var(--pink);border-bottom:3px solid var(--pink);transform:translateX(-50%) rotate(45deg)}
+.fl{position:fixed;pointer-events:none;z-index:99;font-size:1.5rem;animation:fl 1.2s ease-out forwards}
+@keyframes fl{to{transform:translate(var(--dx),-90px) rotate(var(--r));opacity:0}}
+.petal{position:fixed;top:-8vh;z-index:2;pointer-events:none;opacity:.85;animation:fall linear infinite,sway ease-in-out infinite alternate}
+@keyframes fall{to{translate:0 118vh}}
+@keyframes sway{from{margin-left:-24px;rotate:-25deg}to{margin-left:24px;rotate:25deg}}
+.spk{position:fixed;z-index:1;pointer-events:none;animation:twinkle ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:0;scale:.3}50%{opacity:1;scale:1.2}}
+.balloon{position:fixed;bottom:-12vh;z-index:4;cursor:pointer;animation:float linear forwards,wob 3s ease-in-out infinite alternate}
+@keyframes float{to{translate:0 -125vh}}
+@keyframes wob{from{margin-left:-14px;rotate:-6deg}to{margin-left:14px;rotate:6deg}}
+h1{position:relative}
+h1::before,h1::after{position:absolute;font-size:.45em;animation:twinkle 1.8s ease-in-out infinite}
+h1::before{content:"✨";left:6%;top:-.1em}
+h1::after{content:"💫";right:6%;bottom:0;animation-delay:-.9s}
+.cake{animation:glow 2.8s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 7px 0 var(--pink),0 0 0 rgba(255,79,160,0)}50%{box-shadow:0 7px 0 var(--pink),0 0 30px rgba(255,79,160,.65)}}
+.gift .g{animation:wiggle 3.2s ease-in-out infinite}
+@keyframes wiggle{0%,78%,100%{transform:rotate(0)}83%{transform:rotate(-12deg) scale(1.08)}88%{transform:rotate(12deg) scale(1.08)}93%{transform:rotate(-6deg)}}
+.chip,.btn{transition:transform .2s,box-shadow .2s}
+.chip:hover,.btn:hover{transform:translateY(-3px) scale(1.04)}
+@media(prefers-reduced-motion:reduce){.petal,.spk,.balloon{display:none}}
+</style>
+</head>
+<body>
+<span class="deco" style="top:8%;left:8%">🌸</span><span class="deco" style="top:14%;right:10%;animation-delay:-1s">🎀</span>
+<span class="deco" style="top:46%;left:5%;animation-delay:-2s">🍓</span><span class="deco" style="top:58%;right:6%;animation-delay:-3s">⭐</span>
+<span class="deco" style="bottom:10%;left:12%;animation-delay:-1.5s">🍭</span><span class="deco" style="bottom:8%;right:14%;animation-delay:-2.5s">🧸</span>
+
+<main>
+  <div class="ears" id="bunny" role="button" aria-label="น้องกระต่าย"><div class="bubble" id="bub"></div><svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg"><g stroke="#ff4fa0" stroke-width="3"><ellipse cx="40" cy="30" rx="13" ry="28" fill="#fff" transform="rotate(-10 40 30)"/><ellipse cx="80" cy="30" rx="13" ry="28" fill="#fff" transform="rotate(10 80 30)"/><ellipse cx="60" cy="72" rx="46" ry="34" fill="#fff"/></g><ellipse cx="40" cy="32" rx="6" ry="18" fill="#ffb3d6" transform="rotate(-10 40 32)"/><ellipse cx="80" cy="32" rx="6" ry="18" fill="#ffb3d6" transform="rotate(10 80 32)"/><ellipse cx="30" cy="82" rx="9" ry="6" fill="#ff8cc6" opacity=".6"/><ellipse cx="90" cy="82" rx="9" ry="6" fill="#ff8cc6" opacity=".6"/><circle class="blink" cx="44" cy="70" r="5" fill="#5a1a3a"/><circle class="blink" cx="76" cy="70" r="5" fill="#5a1a3a"/><circle cx="42" cy="68" r="1.6" fill="#fff"/><circle cx="74" cy="68" r="1.6" fill="#fff"/><path d="M53 80 q7 8 7 0 q0 8 7 0" fill="none" stroke="#5a1a3a" stroke-width="2.5" stroke-linecap="round"/><path d="M52 44 l-14 -8 l2 16 z M68 44 l14 -8 l-2 16 z" fill="#ff4fa0" stroke="#d6247f" stroke-width="2" stroke-linejoin="round"/><circle cx="60" cy="45" r="5" fill="#d6247f"/></svg></div>
+  <h1>สุขสันต์วันเกิด!</h1>
+  <p class="sub" id="who"></p>
+
+  <div class="cake" id="cake">
+    <div class="candles" id="candles"><span class="candle">🕯️</span><span class="candle" style="animation-delay:-.2s">🕯️</span><span class="candle" style="animation-delay:-.4s">🕯️</span></div>
+    <span class="cakeico">🎂</span>
+  </div>
+  <p class="hint" id="hint">แตะเค้กเพื่อเป่าเทียน 🕯️</p>
+
+  <div class="gift" id="gift"><div class="g" id="gicon">🎁</div><span class="chip" id="gtxt">แตะที่กล่องของขวัญสิ! 💖</span></div>
+
+  <div class="bar">
+    <button class="chip" id="bMusic">🎵 เปิดเพลง</button>
+    <button class="chip" id="bFortune">🔮 ดวงวันเกิด</button>
+  </div>
+</main>
+
+<div id="modal"><div class="card" id="mc"></div></div>
+
+<script>
+/* ===== ตั้งค่าตรงนี้ ===== */
+const CONFIG = {
+  name: "",            // ชื่อคนที่วันเกิด เช่น "แพรว"
+  from: "",            // ชื่อคนส่ง เช่น "ยอร์ช"
+  birthday: "",        // "2026-12-25T00:00:00" ถ้าอยากนับถอยหลัง (เว้นว่างได้)
+  wishes: [
+    "ขอให้มีความสุขมากๆ คิดสิ่งใดขอให้สมปรารถนา สุขภาพร่างกายแข็งแรงนะ!",
+    "ขอให้ปีนี้เป็นปีที่ดีที่สุด เจอแต่เรื่องดีๆ และรอยยิ้มทุกวันนะ 💖",
+    "ขอให้รวยๆ เฮงๆ ทำอะไรก็สำเร็จ ไม่มีอุปสรรคมาขวางเลย!",
+    "ขอให้มีแต่คนรัก คนเอ็นดู และมีความสุขเหมือนได้กินของอร่อยทุกวัน 🍰",
+    "โตขึ้นอีกปีแล้ว ขอให้ยังน่ารักและใจดีแบบนี้ตลอดไปนะ 🎀"
+  ],
+  fortunes: [
+    "วันนี้โชคดีเป็นพิเศษ ลองซื้อลอตเตอรี่ดูนะ 🍀",
+    "จะมีข่าวดีเข้ามาเร็วๆ นี้ เตรียมยิ้มรอได้เลย 💌",
+    "ปีนี้เสน่ห์แรง คนรอบตัวเอ็นดูเป็นพิเศษ 😈💖",
+    "งานการเงินลื่นไหล มีของขวัญไม่คาดฝันรออยู่ 🎁",
+    "สุขภาพดี ใจเบิกบาน ขอให้กินอิ่มนอนหลับทุกคืน 🌙"
+  ]
+};
+/* ======================== */
+
+const $ = id => document.getElementById(id);
+const q = new URLSearchParams(location.search);
+const NAME = q.get("name") || CONFIG.name, FROM = q.get("from") || CONFIG.from;
+if (NAME) $("who").textContent = "ถึง " + NAME + " 💖";
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const COLORS = ["#ff4fa0","#ffc4de","#ff8cc6","#ffe3f0","#d6247f","#ffffff"];
+const fire = o => confetti({ useWorker: false, disableForReducedMotion: true, ...o });
+const boom = (n = 120) => fire({ particleCount: n, spread: 90, origin: { y: .6 }, colors: COLORS, zIndex: 100 });
+function rain() {
+  const end = Date.now() + 3000;
+  const iv = setInterval(() => {
+    if (Date.now() > end) return clearInterval(iv);
+    for (const x of [.15, .85]) fire({ particleCount: 14, spread: 360, startVelocity: 25, ticks: 60, zIndex: 100, colors: COLORS, origin: { x, y: Math.random() * .6 } });
+  }, 250);
+}
+
+/* ---- modal ---- */
+const modal = $("modal"), mc = $("mc");
+let onClose = null;
+function open(html, close) { mc.innerHTML = html; onClose = close || null; modal.classList.add("show"); }
+function closeModal() { modal.classList.remove("show"); if (onClose) onClose(); onClose = null; }
+modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+mc.addEventListener("click", e => { if (e.target.dataset.close !== undefined) closeModal(); });
+
+/* ---- เป่าเทียน ---- */
+let blown = false;
+$("cake").addEventListener("click", () => {
+  if (blown) { document.querySelectorAll(".candle").forEach(c => c.classList.remove("out")); blown = false; $("hint").textContent = "แตะเค้กเพื่อเป่าเทียน 🕯️"; return; }
+  document.querySelectorAll(".candle").forEach((c, i) => setTimeout(() => c.classList.add("out"), i * 250));
+  setTimeout(() => { boom(); $("hint").textContent = "เป่าเทียนแล้ว! อธิษฐานด้วยนะ 🙏 (แตะอีกทีเพื่อจุดใหม่)"; }, 800);
+  blown = true;
+});
+
+/* ---- ของขวัญ + นับถอยหลัง ---- */
+const target = CONFIG.birthday ? new Date(CONFIG.birthday).getTime() : 0;
+const locked = () => target && Date.now() < target;
+function tick() {
+  if (!locked()) { $("gtxt").textContent = "แตะที่กล่องของขวัญสิ! 💖"; return; }
+  let s = Math.floor((target - Date.now()) / 1000);
+  const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+  $("gtxt").textContent = "🔒 อีก " + d + " วัน " + h + " ชม. " + m + " นาที";
+}
+tick(); setInterval(tick, 1000);
+
+function wishCard() {
+  open(`<div style="font-size:2rem">🎀💖🎀</div><h2>เซอร์ไพรส์! 🎉</h2><p id="wt">${pick(CONFIG.wishes)}</p>${FROM ? `<p style="margin-top:-.6rem;color:var(--deep)">💌 จาก ${FROM}</p>` : ""}<button class="btn alt" id="nw">คำอวยพรอื่น 💌</button><button class="btn" data-close>รับพร! 💖</button>`,
+    () => { $("gicon").textContent = "🎁"; });
+  $("nw").onclick = () => { $("wt").textContent = pick(CONFIG.wishes); boom(40); };
+}
+$("gift").addEventListener("click", () => {
+  if (locked()) return open(`<div style="font-size:3rem">🔒</div><h2>ยังไม่ถึงเวลานะ~</h2><p>รออีกนิดแล้วค่อยกลับมาเปิดนะ 💖</p><button class="btn" data-close>โอเค</button>`);
+  $("gicon").textContent = "🎉"; rain(); setTimeout(wishCard, 400);
+});
+
+/* ---- ดวง ---- */
+$("bFortune").onclick = () => {
+  open(`<div style="font-size:3rem">🔮</div><h2>ดวงวันเกิด</h2><p id="ft">${pick(CONFIG.fortunes)}</p><button class="btn alt" id="nf">ดูใหม่ ✨</button><button class="btn" data-close>ขอบคุณ 💖</button>`);
+  $("nf").onclick = () => { $("ft").textContent = pick(CONFIG.fortunes); boom(30); };
+};
+
+/* ---- เพลง Happy Birthday (WebAudio) ---- */
+let ac, playing = false, timers = [];
+const N = { C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23, G4: 392, A4: 440, B4: 493.88, C5: 523.25, D5: 587.33, E5: 659.25, F5: 698.46, G5: 783.99 };
+const SONG = [["G4",.75],["G4",.25],["A4",1],["G4",1],["C5",1],["B4",2],["G4",.75],["G4",.25],["A4",1],["G4",1],["D5",1],["C5",2],["G4",.75],["G4",.25],["G5",1],["E5",1],["C5",1],["B4",1],["A4",1],["F5",.75],["F5",.25],["E5",1],["C5",1],["D5",1],["C5",2]];
+function note(f, at, dur) {
+  const o = ac.createOscillator(), g = ac.createGain();
+  o.type = "triangle"; o.frequency.value = f; o.connect(g); g.connect(ac.destination);
+  g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(.25, at + .02); g.gain.exponentialRampToValueAtTime(.001, at + dur);
+  o.start(at); o.stop(at + dur + .05);
+}
+function stopSong() { timers.forEach(clearTimeout); timers = []; playing = false; $("bMusic").textContent = "🎵 เปิดเพลง"; }
+$("bMusic").onclick = () => {
+  if (playing) { if (ac) ac.close(); ac = null; return stopSong(); }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  let t = ac.currentTime + .1, beat = .42;
+  SONG.forEach(([n, b]) => { note(N[n], t, b * beat); t += b * beat; });
+  playing = true; $("bMusic").textContent = "⏸️ หยุดเพลง";
+  timers.push(setTimeout(stopSong, (t - ac.currentTime) * 1000 + 300));
+};
+
+/* ---- แอนิเมชันบรรยากาศ ---- */
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const R = (a, b) => a + Math.random() * (b - a);
+  for (let i = 0; i < 14; i++) {
+    const p = document.createElement("span"); p.className = "petal"; p.textContent = pick(["🌸", "🌸", "💮", "🎀"]);
+    p.style.cssText = `left:${R(0, 100)}vw;font-size:${R(.9, 1.6)}rem;animation-duration:${R(9, 16)}s,${R(2, 4)}s;animation-delay:${-R(0, 16)}s,${-R(0, 4)}s`;
+    document.body.appendChild(p);
+  }
+  for (let i = 0; i < 10; i++) {
+    const s = document.createElement("span"); s.className = "spk"; s.textContent = "✨";
+    s.style.cssText = `left:${R(2, 96)}vw;top:${R(2, 94)}vh;font-size:${R(.8, 1.4)}rem;animation-duration:${R(2, 4)}s;animation-delay:${-R(0, 4)}s`;
+    document.body.appendChild(s);
+  }
+  const balloon = () => {
+    const b = document.createElement("span"); b.className = "balloon"; b.textContent = "🎈";
+    b.style.cssText = `left:${R(3, 92)}vw;font-size:${R(2.2, 3.4)}rem;filter:hue-rotate(${R(-45, -5)}deg) saturate(.9);animation-duration:${R(10, 16)}s,3s`;
+    b.onclick = e => { fire({ particleCount: 30, spread: 70, startVelocity: 20, origin: { x: e.clientX / innerWidth, y: e.clientY / innerHeight }, colors: COLORS, zIndex: 100 }); b.remove(); };
+    b.addEventListener("animationend", ev => { if (ev.animationName === "float") b.remove(); });
+    document.body.appendChild(b);
+  };
+  balloon(); setTimeout(balloon, 1500); setTimeout(balloon, 3200);
+  setInterval(balloon, 3500);
+}
+
+/* ---- น้องกระต่ายโต้ตอบ ---- */
+const bunny = $("bunny"), bub = $("bub");
+const SAYS = ["ว้าย จั๊กจี้~ 🐰", "สุขสันต์วันเกิดน้า! 🎂", "รักนะ จุ๊บๆ 💖", "หิวเค้กจังเลย 🍰", "วันนี้เธอน่ารักที่สุด!", "กระต่ายขออวยพรด้วยคน 🎀", "แตะอีกๆ ชอบ! ✨", "ขอให้สมหวังทุกอย่างเลย 🍓"];
+let taps = 0, bubTimer;
+function say(t, ms = 2200) { bub.textContent = t; bub.classList.add("show"); clearTimeout(bubTimer); bubTimer = setTimeout(() => bub.classList.remove("show"), ms); }
+function anim(cls, ms) { bunny.classList.remove("jump", "spin"); void bunny.offsetWidth; bunny.classList.add(cls); setTimeout(() => bunny.classList.remove(cls), ms); }
+bunny.addEventListener("click", () => {
+  taps++;
+  const r = bunny.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const spin = taps % 5 === 0;
+  anim(spin ? "spin" : "jump", spin ? 800 : 600);
+  say(spin ? "หมุนติ้วๆ! 🌀" : pick(SAYS));
+  for (let i = 0; i < 6; i++) {
+    const s = document.createElement("span"); s.className = "fl"; s.textContent = pick(["💖", "🍓", "🌸", "✨", "💗"]);
+    s.style.left = cx - 10 + "px"; s.style.top = cy - 10 + "px";
+    s.style.setProperty("--dx", (Math.random() * 160 - 80) + "px"); s.style.setProperty("--r", (Math.random() * 60 - 30) + "deg");
+    document.body.appendChild(s); setTimeout(() => s.remove(), 1250);
+  }
+  if (spin) fire({ particleCount: 60, spread: 80, origin: { x: cx / innerWidth, y: cy / innerHeight }, colors: COLORS, zIndex: 100 });
+});
+setTimeout(() => say("แตะหนูสิ~ 🐰", 2500), 1500);
+setInterval(() => { if (!modal.classList.contains("show") && !bub.classList.contains("show")) { anim("jump", 600); say(pick(SAYS)); } }, 14000);
+
+/* ---- เอฟเฟกต์ตามนิ้ว ---- */
+let last = 0;
+const bits = ["💖", "🍓", "🌸", "⭐", "🐰"];
+addEventListener("pointermove", e => {
+  const n = Date.now(); if (n - last < 70) return; last = n;
+  const s = document.createElement("span"); s.className = "trail"; s.textContent = pick(bits);
+  s.style.left = e.clientX - 8 + "px"; s.style.top = e.clientY - 8 + "px";
+  document.body.appendChild(s); setTimeout(() => s.remove(), 900);
+});
+</script>
+</body>
+</html>
